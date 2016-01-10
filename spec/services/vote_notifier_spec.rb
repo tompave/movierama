@@ -1,11 +1,11 @@
 require 'rails_helper'
-require 'support/movie_stubs'
+require 'support/movie_helpers'
 
 RSpec.describe VoteNotifier do
-  stub_movie_and_author
+  setup_movie_and_users
 
   let(:vote) { :like }
-  subject { VoteNotifier.new(author, movie, vote) }
+  subject { VoteNotifier.new(voter, movie, vote) }
 
 
   describe "#send_notifications" do

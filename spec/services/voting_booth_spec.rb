@@ -1,8 +1,8 @@
 require 'rails_helper'
-require 'support/movie_stubs'
+require 'support/movie_helpers'
 
 RSpec.describe VotingBooth do
-  stub_movie_and_author
+  setup_movie_and_users
 
   describe "#vote" do
     describe "vote notifications" do
@@ -10,10 +10,10 @@ RSpec.describe VotingBooth do
       let(:notifier) { double('VoteNotifier') }
       let(:vote_type) { :like }
 
-      subject { VotingBooth.new(author, movie, notifier_klass) }
+      subject { VotingBooth.new(voter, movie, notifier_klass) }
 
       it "uses the provided notifier to handle the user notification" do
-        expect(notifier_klass).to receive(:new).with(author, movie, vote_type).and_return(notifier)
+        expect(notifier_klass).to receive(:new).with(voter, movie, vote_type).and_return(notifier)
         expect(notifier).to receive(:send_notifications)
         subject.vote(vote_type)
       end

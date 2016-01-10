@@ -1,5 +1,5 @@
-module RspecMovieStubs
-  def stub_movie_and_author
+module RspecMovieHelpers
+  def setup_movie_and_users
     let(:author) do
       User.create(
         uid:  'null|12345',
@@ -17,10 +17,18 @@ module RspecMovieStubs
       )
     end
 
+    let(:voter) do
+      User.create(
+        uid:  'null|235235',
+        name: 'John Doe',
+        email: 'john.doe@example.com'
+      )
+    end
+
     before do
       movie # cause movie and author to come into existence 
     end
   end
 end
 
-RSpec.configure { |c| c.extend RspecMovieStubs }
+RSpec.configure { |c| c.extend RspecMovieHelpers }
