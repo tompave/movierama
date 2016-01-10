@@ -1,0 +1,6 @@
+Hi <%= @author.name %>,
+
+Your movie "<%= @movie.title %>"" has been <%= @vote %>d by <%= link_to(@voter.name, user_movies_url(@voter)) %>.
+
+Cheers,
+Movierama

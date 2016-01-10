@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title MovieRama - Vote Notification
+  %body
+    %h1= "Your movie '#{@movie.title}' has been #{@vote}d!"
+
+    .content
+      %p
+        Hi #{@author.name},
+      %p
+        Your movie
+        %strong
+          "#{@movie.title}"
+        has been #{@vote}d by #{link_to(@voter.name, user_movies_url(@voter))}.
+
+      %p
+      Cheers,
+      Movierama
+
+
+
