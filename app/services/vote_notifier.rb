@@ -2,19 +2,14 @@ class VoteNotifier
   def initialize(voter, movie, vote)
     @voter = voter
     @movie = movie
-    @author = movie.user
     @vote = vote
   end
 
 
   def send_notifications
-    if email = @author.email.presence
-    else
-      false
+    if @movie.user.email.present?
+      NotificationsMailer.movie_vote(@movie, @voter, @vote).deliver
     end
   end
-
-
-  private
 
 end
