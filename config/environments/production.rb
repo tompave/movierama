@@ -59,6 +59,16 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address:        ENV['SMTP_ADDRESS'],
+    port:           ENV['SMTP_PORT'],
+    authentication: :plain,
+    user_name:      ENV['SMTP_USERNAME'],
+    password:       ENV['SMTP_PASSWORD'],
+    domain:         'movierama.com'
+  }
+  
   config.action_mailer.default_url_options = {
     host: 'movierama.com'
   }

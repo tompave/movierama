@@ -53,11 +53,12 @@ gem 'omniauth-github'
 gem 'cancan'   # Authorisation
 
 
-# Debugger
-gem 'pry'
-gem 'pry-nav'
-gem 'pry-doc'
-
+group :development, :test do
+  gem 'letter_opener', '~> 1.4'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-doc'
+end
 
 group :test do
   gem 'guard-rspec'    # Continuous testing
