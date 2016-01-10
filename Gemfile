@@ -53,7 +53,7 @@ gem 'omniauth-github'
 gem 'cancan'   # Authorisation
 
 
-group :development, :test do
+group :development do
   gem 'letter_opener', '~> 1.4'
   gem 'pry'
   gem 'pry-nav'
