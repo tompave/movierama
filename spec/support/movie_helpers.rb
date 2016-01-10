@@ -2,7 +2,7 @@ module RspecMovieHelpers
   def setup_movie_and_users
     let(:author) do
       User.create(
-        uid:  'null|12345',
+        uid:  "null|#{rand(10_000)}",
         name: 'Bob',
         email: 'bob@example.com'
       )
@@ -19,7 +19,7 @@ module RspecMovieHelpers
 
     let(:voter) do
       User.create(
-        uid:  'null|235235',
+        uid:  "null|#{rand(10_000)}",
         name: 'John Doe',
         email: 'john.doe@example.com'
       )

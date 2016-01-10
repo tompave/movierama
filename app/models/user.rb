@@ -2,6 +2,8 @@ class User < BaseModel
   include Ohm::Timestamps
 
   attribute :name
+
+  # User email, provided by the OAuth provider. It can be nil.
   attribute :email
   unique :email
 

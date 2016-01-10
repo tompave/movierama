@@ -97,17 +97,17 @@ RSpec.describe 'vote on movies', type: :feature do
         example "liking will NOT send an email" do
           expect {
             page.like('Empire strikes back')
-          }.to change {
+          }.to_not change {
             ActionMailer::Base.deliveries.length
-          }.by(0)
+          }
         end
 
         example "hating will NOT send an email" do
           expect {
             page.hate('Empire strikes back')
-          }.to change {
+          }.to_not change {
             ActionMailer::Base.deliveries.length
-          }.by(0)
+          }
         end
       end
     end
