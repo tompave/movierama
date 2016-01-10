@@ -1,8 +1,9 @@
 # Cast or withdraw a vote on a movie
 class VotingBooth
-  def initialize(user, movie)
+  def initialize(user, movie, notifier=VoteNotifier)
     @user  = user
     @movie = movie
+    @notifier_klass = notifier
   end
 
   def vote(like_or_hate)
@@ -14,6 +15,7 @@ class VotingBooth
     unvote # to guarantee consistency
     set.add(@user)
     _update_counts
+    _handle_notifications(like_or_hate)
     self
   end
   
@@ -30,5 +32,12 @@ class VotingBooth
     @movie.update(
       liker_count: @movie.likers.size,
       hater_count: @movie.haters.size)
+  end
+
+
+  def _handle_notifications(like_or_hate)
+    if @notifier_klass
+      @notifier_klass.new(@user, @movie, like_or_hate).send_notifications
+    end
   end
 end
