@@ -1,5 +1,5 @@
 class NotificationsMailer < ActionMailer::Base
-  default from: "notifications@movierama.dev"
+  default from: "notifications@movierama.com"
 
   def movie_vote(movie, voter, vote)
     @movie  = movie
